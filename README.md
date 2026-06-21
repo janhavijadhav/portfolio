@@ -1,36 +1,139 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portfolio Clone — Next.js + Sanity CMS
 
-## Getting Started
+A pixel-accurate replica of the [Sankar Raghuthaman portfolio](https://sankar-raghuthaman.netlify.app/), built with **Next.js**, **TypeScript**, **Tailwind CSS v4**, **Framer Motion**, **Lucide React**, and **Sanity CMS**.
 
-First, run the development server:
+All portfolio content is fetched dynamically from Sanity — no hardcoded data in the frontend.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Website Audit Summary
+
+### Sections (in order)
+
+| # | Section | ID | Notes |
+|---|---------|-----|-------|
+| 1 | Navbar | — | Sticky header, mobile hamburger menu |
+| 2 | Hero | — | Two-column grid + Professional Snapshot card |
+| 3 | Featured Projects | `#projects` | 2-column project grid, "View All Projects" |
+| 4 | Experience | `#experience` | Soft background, stacked timeline cards |
+| 5 | Skills | `#skills` | Skill group cards with pills |
+| 6 | Education | `#education` | 2-column grid |
+| 7 | Research | `#research` | Publication cards |
+| 8 | About | `#about` | Photo + bio grid |
+| 9 | Contact | `#contact` | CTA card |
+| 10 | Footer | — | Copyright + social icons |
+
+### Additional Pages
+
+- `/projects` — All projects (compact cards)
+- `/projects/[slug]` — Project detail with blocks
+- `/c/[slug]` — Multi-candidate portfolio route
+- `/studio` — Embedded Sanity Studio
+
+### Design Tokens (from original CSS)
+
+- Accent: `#2f66f3` / `#1f4fd0`
+- Text: `#0f172a` / Muted: `#475569`
+- Background gradient: `#f8fafc` → `#f4f8ff`
+- Container: `1120px`, Radius: `18px`
+- Font: Inter
+
+## Project Structure
+
+```
+sanity/
+  schemas/          # Sanity document & object schemas
+  queries/          # GROQ queries
+  types/            # TypeScript types for Sanity documents
+  lib/              # Sanity client
+  scripts/          # Seed script
+
+src/
+  app/              # Next.js App Router pages
+  components/       # Reusable UI, layout, sections
+  features/         # Feature modules (projects, portfolio)
+  lib/              # Utilities, animations, data fetching
+  sanity/           # Frontend Sanity integration
+  types/            # Shared TypeScript types
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Setup
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 1. Install dependencies
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm install
+```
 
-## Learn More
+### 2. Create a Sanity project
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npx sanity@latest init --project-plan free
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Or create a project at [sanity.io/manage](https://www.sanity.io/manage).
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### 3. Configure environment variables
 
-## Deploy on Vercel
+Copy `.env.example` to `.env.local`:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```env
+NEXT_PUBLIC_SANITY_PROJECT_ID=your_project_id
+NEXT_PUBLIC_SANITY_DATASET=production
+NEXT_PUBLIC_SANITY_API_VERSION=2024-01-01
+SANITY_API_READ_TOKEN=your_read_token
+SANITY_API_WRITE_TOKEN=your_write_token
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### 4. Seed reference content (optional)
+
+Populates a featured candidate matching the reference site:
+
+```bash
+npm run sanity:seed
+```
+
+### 5. Run development servers
+
+```bash
+# Next.js frontend
+npm run dev
+
+# Sanity Studio (standalone)
+npm run sanity:dev
+```
+
+- Frontend: [http://localhost:3000](http://localhost:3000)
+- Studio: [http://localhost:3000/studio](http://localhost:3000/studio)
+
+## Sanity Schemas
+
+The `candidate` document aggregates all portfolio content:
+
+- Personal info (name, title, photo, bio)
+- Hero, About, Contact, SEO
+- Skills, Experience, Education, Projects
+- Certifications, Research, Testimonials
+- Social links, Resume file
+
+Mark one candidate as **Featured** to render on `/`.
+
+For multiple candidates, use `/c/[slug]` (e.g. `/c/sankar-raghuthaman`).
+
+## Scripts
+
+| Command | Description |
+|---------|-------------|
+| `npm run dev` | Start Next.js dev server |
+| `npm run build` | Production build |
+| `npm run sanity:dev` | Standalone Sanity Studio |
+| `npm run sanity:deploy` | Deploy Studio to sanity.studio |
+| `npm run sanity:seed` | Seed reference candidate data |
+
+## Tech Stack
+
+- Next.js 16 (App Router)
+- TypeScript (strict)
+- Tailwind CSS v4
+- Framer Motion (entrance, stagger, hover)
+- Lucide React
+- Sanity CMS v3
+- next-sanity

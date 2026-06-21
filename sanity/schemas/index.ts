@@ -1,0 +1,35 @@
+import { candidate } from "./documents/candidate";
+import {
+  aboutSection,
+  certificationItem,
+  contactInfo,
+  educationItem,
+  experienceItem,
+  heroSection,
+  projectDetailBlock,
+  projectItem,
+  researchItem,
+  sectionHeader,
+  seoSettings,
+  skillGroup,
+  socialLink,
+  testimonialItem,
+} from "./objects";
+
+export const schemaTypes = [
+  candidate,
+  heroSection,
+  aboutSection,
+  skillGroup,
+  experienceItem,
+  educationItem,
+  projectItem,
+  projectDetailBlock,
+  certificationItem,
+  researchItem,
+  testimonialItem,
+  socialLink,
+  contactInfo,
+  seoSettings,
+  sectionHeader,
+];
