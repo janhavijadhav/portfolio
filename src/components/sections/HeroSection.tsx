@@ -1,7 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import { Fragment } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import type { Candidate } from "@/types";
 import { Button } from "@/components/ui/Button";
@@ -24,14 +24,28 @@ const AGENT_PIPELINE = [
   { label: "Synthesis", color: "#22d3ee" },
 ];
 
-const container = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.1, delayChildren: 0.15 } },
-};
+function useTyping(text: string, delay = 40) {
+  const [displayed, setDisplayed] = useState("");
+  useEffect(() => {
+    setDisplayed("");
+    let i = 0;
+    const t = setInterval(() => {
+      i++;
+      setDisplayed(text.slice(0, i));
+      if (i >= text.length) clearInterval(t);
+    }, delay);
+    return () => clearInterval(t);
+  }, [text, delay]);
+  return displayed;
+}
 
-const item = {
-  hidden: { opacity: 0, y: 24 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] } },
+const fadeUp = {
+  hidden: { opacity: 0, y: 20 },
+  visible: (d: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: d },
+  }),
 };
 
 export function HeroSection({ candidate }: HeroSectionProps) {
@@ -39,113 +53,114 @@ export function HeroSection({ candidate }: HeroSectionProps) {
   const resumeUrl = RESUME_URL;
   const linkedinUrl =
     getSocialUrl(candidate.socialLinks, "linkedin") ?? candidate.contact?.linkedinUrl;
+  const headline = hero?.headline ?? "";
+  const typed = useTyping(headline, 35);
 
   return (
-    <section className="hero-section section">
-      <div className="container">
-        <div className="hero-layout">
-          {/* ── Left: content ── */}
-          <motion.div
-            className="hero-content"
-            initial="hidden"
-            animate="visible"
-            variants={container}
-          >
-            <motion.div variants={item}>
-              <p className="terminal-prompt">
-                <span className="terminal-user">janhavi@portfolio</span>
-                <span className="terminal-sep">:~$</span>&nbsp;whoami
-              </p>
-            </motion.div>
+    <section className="hero-section" id="hero">
+      {/* Full-bleed 3D canvas */}
+      <div className="hero-canvas-bg" aria-hidden>
+        <NeuralNetCanvas />
+      </div>
 
-            <motion.h1 variants={item}>{hero?.headline}</motion.h1>
+      {/* Overlay gradients for readability */}
+      <div className="hero-overlay" aria-hidden />
 
-            {hero?.subheadline ? (
-              <motion.p className="hero-copy" variants={item}>
-                {hero.subheadline}
-              </motion.p>
-            ) : null}
+      {/* Content */}
+      <div className="container hero-content-wrap">
+        <motion.div className="hero-content" initial="hidden" animate="visible">
+          <motion.div variants={fadeUp} custom={0}>
+            <p className="terminal-prompt">
+              <span className="terminal-user">janhavi@portfolio</span>
+              <span className="terminal-sep">:~$</span>&nbsp;whoami
+            </p>
+          </motion.div>
 
-            <motion.div className="hero-actions" variants={item}>
-              <Button href="/projects" variant="primary">
-                View Projects
+          {/* Typed headline */}
+          <div className="hero-headline-wrap">
+            <h1 className="hero-headline-typed">
+              {typed}
+              <span className="type-cursor" aria-hidden>|</span>
+            </h1>
+          </div>
+
+          {hero?.subheadline ? (
+            <motion.p className="hero-copy" variants={fadeUp} custom={0.9}>
+              {hero.subheadline}
+            </motion.p>
+          ) : null}
+
+          <motion.div className="hero-actions" variants={fadeUp} custom={1.1}>
+            <Button href="/projects" variant="primary">
+              View Projects
+            </Button>
+            {resumeUrl ? (
+              <Button href={resumeUrl} variant="secondary" external>
+                Download Resume
               </Button>
-              {resumeUrl ? (
-                <Button href={resumeUrl} variant="secondary" external>
-                  Download Resume
-                </Button>
-              ) : null}
-              {linkedinUrl ? (
-                <Button href={linkedinUrl} variant="ghost" external>
-                  LinkedIn
-                </Button>
-              ) : null}
-            </motion.div>
-
-            {hero?.highlights?.length ? (
-              <motion.div className="hero-badges" variants={item}>
-                {hero.highlights.map((tag) => (
-                  <span key={tag} className="hero-badge">
-                    {tag}
-                  </span>
-                ))}
-              </motion.div>
             ) : null}
-
-            {/* Pipeline band */}
-            <motion.div className="pipeline-band" variants={item} style={{ marginTop: "2rem" }}>
-              <div className="pipeline-top-line" />
-              <p className="mini-label" style={{ margin: 0 }}>
-                FinSight multi-agent pipeline
-              </p>
-              <div className="agent-flow">
-                {AGENT_PIPELINE.map((step, index) => (
-                  <Fragment key={step.label}>
-                    <span
-                      className="agent-node"
-                      style={{ "--node-color": step.color } as React.CSSProperties}
-                    >
-                      {step.label}
-                    </span>
-                    {index < AGENT_PIPELINE.length - 1 ? (
-                      <span className="agent-arrow" aria-hidden>
-                        →
-                      </span>
-                    ) : null}
-                  </Fragment>
-                ))}
-              </div>
-            </motion.div>
-
-            {/* Snapshot stats */}
-            {hero?.snapshotItems?.length ? (
-              <motion.div className="stat-row" variants={container}>
-                {hero.snapshotItems.map((stat, i) => (
-                  <motion.div key={stat} className="stat-chip" variants={item}>
-                    <span
-                      className="stat-chip-marker"
-                      style={{
-                        background: i % 2 === 0 ? "var(--accent)" : "var(--accent-2)",
-                        boxShadow: `0 0 8px ${i % 2 === 0 ? "var(--accent)" : "var(--accent-2)"}`,
-                      }}
-                    />
-                    <p>{stat}</p>
-                  </motion.div>
-                ))}
-              </motion.div>
+            {linkedinUrl ? (
+              <Button href={linkedinUrl} variant="ghost" external>
+                LinkedIn
+              </Button>
             ) : null}
           </motion.div>
 
-          {/* ── Right: 3D canvas ── */}
-          <motion.div
-            className="hero-canvas-wrap"
-            initial={{ opacity: 0, scale: 0.92 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1], delay: 0.3 }}
-          >
-            <NeuralNetCanvas />
-          </motion.div>
-        </div>
+          {hero?.highlights?.length ? (
+            <motion.div className="hero-badges" variants={fadeUp} custom={1.3}>
+              {hero.highlights.map((tag, i) => (
+                <motion.span
+                  key={tag}
+                  className="hero-badge"
+                  initial={{ opacity: 0, scale: 0.85 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 1.4 + i * 0.07, duration: 0.35 }}
+                >
+                  {tag}
+                </motion.span>
+              ))}
+            </motion.div>
+          ) : null}
+        </motion.div>
+
+        {/* Agent pipeline band */}
+        <motion.div
+          className="pipeline-band hero-pipeline"
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1.7, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <div className="pipeline-top-line" />
+          <p className="mini-label" style={{ margin: 0 }}>
+            FinSight multi-agent pipeline
+          </p>
+          <div className="agent-flow">
+            {AGENT_PIPELINE.map((step, index) => (
+              <Fragment key={step.label}>
+                <span
+                  className="agent-node"
+                  style={{ "--node-color": step.color } as React.CSSProperties}
+                >
+                  {step.label}
+                </span>
+                {index < AGENT_PIPELINE.length - 1 && (
+                  <span className="agent-arrow" aria-hidden>→</span>
+                )}
+              </Fragment>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Scroll cue */}
+        <motion.div
+          className="scroll-cue"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 2.2, duration: 0.8 }}
+        >
+          <div className="scroll-cue-line" />
+          <span>scroll</span>
+        </motion.div>
       </div>
     </section>
   );

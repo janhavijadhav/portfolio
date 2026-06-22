@@ -1,11 +1,19 @@
+import { forwardRef } from "react";
 import { cn } from "@/lib/utils";
 
-interface CardProps {
+interface CardProps extends React.HTMLAttributes<HTMLElement> {
   children: React.ReactNode;
   className?: string;
   as?: "article" | "aside" | "div";
 }
 
-export function Card({ children, className, as: Tag = "div" }: CardProps) {
-  return <Tag className={cn("card", className)}>{children}</Tag>;
-}
+export const Card = forwardRef<HTMLElement, CardProps>(
+  ({ children, className, as: Tag = "div", ...rest }, ref) => {
+    return (
+      <Tag ref={ref as React.Ref<HTMLDivElement>} className={cn("card", className)} {...rest}>
+        {children}
+      </Tag>
+    );
+  },
+);
+Card.displayName = "Card";

@@ -1,5 +1,6 @@
 "use client";
 
+import { useRef } from "react";
 import { motion } from "framer-motion";
 import type { ProjectItem } from "@/types";
 import { Button } from "@/components/ui/Button";
@@ -18,16 +19,36 @@ interface ProjectCardProps {
 
 export function ProjectCard({ project, compact = false, large = false }: ProjectCardProps) {
   const slug = project.slug;
+  const cardRef = useRef<HTMLElement>(null);
   const classes = [
-    "project-card",
+    "project-card tilt-card",
     compact && "project-card-compact",
     large && "project-card-feature",
   ]
     .filter(Boolean)
     .join(" ");
 
+  const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
+    const el = cardRef.current;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width - 0.5) * 14;
+    const y = ((e.clientY - rect.top) / rect.height - 0.5) * -14;
+    el.style.transform = `perspective(800px) rotateX(${y}deg) rotateY(${x}deg) translateY(-4px)`;
+  };
+
+  const handleMouseLeave = () => {
+    if (cardRef.current) cardRef.current.style.transform = "";
+  };
+
   return (
-    <Card as="article" className={classes}>
+    <Card
+      ref={cardRef}
+      as="article"
+      className={classes}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+    >
       <TermBar path={`~/projects/${slug ?? "untitled"}.ts`} />
       {large ? <span className="feature-badge">Featured build</span> : null}
       {project.category ? (
