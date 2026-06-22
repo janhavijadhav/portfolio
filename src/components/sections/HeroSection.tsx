@@ -44,7 +44,7 @@ const fadeUp = {
   visible: (d: number) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: d },
+    transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] as [number, number, number, number], delay: d },
   }),
 };
 
@@ -128,7 +128,7 @@ export function HeroSection({ candidate }: HeroSectionProps) {
           className="pipeline-band hero-pipeline"
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.7, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ delay: 1.7, duration: 0.6, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
         >
           <div className="pipeline-top-line" />
           <p className="mini-label" style={{ margin: 0 }}>

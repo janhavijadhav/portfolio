@@ -29,7 +29,7 @@ export function PageIntro() {
             className="page-intro-inner"
             initial={{ opacity: 0, scale: 0.85 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
           >
             <div className="page-intro-monogram">JJ</div>
             <motion.p
