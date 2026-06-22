@@ -18,6 +18,9 @@ export function Footer({ candidate }: FooterProps) {
   return (
     <footer className="site-footer">
       <div className="container footer-centered">
+        <p className="footer-status">
+          {"// status: open_to_work — Software Engineer, Agentic AI"}
+        </p>
         <p className="footer-copyright">
           © {year} {candidate.fullName} | All Rights Reserved
         </p>

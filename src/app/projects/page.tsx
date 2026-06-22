@@ -2,12 +2,8 @@ import type { Metadata } from "next";
 import { AppShell } from "@/components/layout/AppShell";
 import { ProjectCard } from "@/features/projects/ProjectCard";
 import { SectionHeader } from "@/components/ui/SectionHeader";
-import { EmptyState } from "@/components/ui/EmptyState";
 import { getFeaturedCandidate } from "@/lib/candidate";
-import { isSanityConfigured } from "@/sanity";
 import { sortByOrder } from "@/lib/utils";
-
-export const revalidate = 60;
 
 export async function generateMetadata(): Promise<Metadata> {
   const candidate = await getFeaturedCandidate();
@@ -23,14 +19,10 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function ProjectsPage() {
-  if (!isSanityConfigured) {
-    return <EmptyState reason="missing-env" />;
-  }
-
   const candidate = await getFeaturedCandidate();
 
   if (!candidate) {
-    return <EmptyState reason="no-candidate" />;
+    return null;
   }
 
   const projects = sortByOrder(candidate.projects ?? []);

@@ -2,21 +2,13 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { AppShell } from "@/components/layout/AppShell";
 import { ProjectDetailView } from "@/features/projects/ProjectDetailView";
-import { EmptyState } from "@/components/ui/EmptyState";
 import { getFeaturedCandidate } from "@/lib/candidate";
-import { isSanityConfigured } from "@/sanity";
-
-export const revalidate = 60;
 
 interface ProjectDetailPageProps {
   params: Promise<{ slug: string }>;
 }
 
 export async function generateStaticParams() {
-  if (!isSanityConfigured) {
-    return [];
-  }
-
   const candidate = await getFeaturedCandidate();
   return (
     candidate?.projects
@@ -43,15 +35,11 @@ export async function generateMetadata({
 }
 
 export default async function ProjectDetailPage({ params }: ProjectDetailPageProps) {
-  if (!isSanityConfigured) {
-    return <EmptyState reason="missing-env" />;
-  }
-
   const { slug } = await params;
   const candidate = await getFeaturedCandidate();
 
   if (!candidate) {
-    return <EmptyState reason="no-candidate" />;
+    return null;
   }
 
   const project = candidate.projects?.find((item) => item.slug === slug);

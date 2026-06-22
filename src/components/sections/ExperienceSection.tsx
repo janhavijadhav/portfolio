@@ -6,6 +6,8 @@ import { Card } from "@/components/ui/Card";
 import { TagList } from "@/components/ui/TagChip";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { AnimateIn } from "@/components/ui/AnimateIn";
+import { TermBar } from "@/components/ui/TermBar";
+import { slugify } from "@/lib/utils";
 import { staggerContainer, staggerItem } from "@/lib/animations";
 
 interface ExperienceCardProps {
@@ -15,6 +17,7 @@ interface ExperienceCardProps {
 export function ExperienceCard({ experience }: ExperienceCardProps) {
   return (
     <Card as="article" className="experience-card">
+      <TermBar path={`~/experience/${slugify(experience.company)}.log`} />
       <div className="role-heading">
         <div>
           <h3>{experience.title}</h3>
@@ -62,14 +65,18 @@ export function ExperienceSection({
         </AnimateIn>
 
         <motion.div
-          className="stack-grid"
+          className="timeline"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.1 }}
           variants={staggerContainer}
         >
           {experience.map((item) => (
-            <motion.div key={`${item.title}-${item.company}`} variants={staggerItem}>
+            <motion.div
+              key={`${item.title}-${item.company}`}
+              variants={staggerItem}
+              className="timeline-item"
+            >
               <ExperienceCard experience={item} />
             </motion.div>
           ))}

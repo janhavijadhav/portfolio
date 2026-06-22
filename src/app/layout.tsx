@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({
@@ -8,9 +8,16 @@ const inter = Inter({
   variable: "--font-inter",
 });
 
+const mono = JetBrains_Mono({
+  subsets: ["latin"],
+  weight: ["500", "600", "700"],
+  variable: "--font-mono-accent",
+});
+
 export const metadata: Metadata = {
-  title: "Portfolio",
-  description: "Professional portfolio powered by Sanity CMS",
+  title: "Janhavi Jadhav | Software Engineer, Agentic AI & Applied ML",
+  description:
+    "Graduate student and software engineer building AI-powered applications, agentic systems, RAG pipelines, and production-grade APIs.",
 };
 
 export default function RootLayout({
@@ -19,7 +26,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} h-full antialiased`}>
+    <html lang="en" className={`${inter.variable} ${mono.variable} h-full antialiased`}>
       <body className="min-h-full">{children}</body>
     </html>
   );

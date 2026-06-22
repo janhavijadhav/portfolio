@@ -7,21 +7,29 @@ import { Card } from "@/components/ui/Card";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { TagList } from "@/components/ui/TagChip";
 import { AnimateIn } from "@/components/ui/AnimateIn";
+import { TermBar } from "@/components/ui/TermBar";
 import { staggerContainer, staggerItem } from "@/lib/animations";
 
 interface ProjectCardProps {
   project: ProjectItem;
   compact?: boolean;
+  large?: boolean;
 }
 
-export function ProjectCard({ project, compact = false }: ProjectCardProps) {
+export function ProjectCard({ project, compact = false, large = false }: ProjectCardProps) {
   const slug = project.slug;
+  const classes = [
+    "project-card",
+    compact && "project-card-compact",
+    large && "project-card-feature",
+  ]
+    .filter(Boolean)
+    .join(" ");
 
   return (
-    <Card
-      as="article"
-      className={compact ? "project-card project-card-compact" : "project-card"}
-    >
+    <Card as="article" className={classes}>
+      <TermBar path={`~/projects/${slug ?? "untitled"}.ts`} />
+      {large ? <span className="feature-badge">Featured build</span> : null}
       {project.category ? (
         <div className="project-meta-row">
           <span className="project-category">{project.category}</span>
@@ -91,9 +99,13 @@ export function ProjectsSection({
           viewport={{ once: true, amount: 0.15 }}
           variants={staggerContainer}
         >
-          {projects.map((project) => (
-            <motion.div key={project.slug ?? project.title} variants={staggerItem}>
-              <ProjectCard project={project} />
+          {projects.map((project, index) => (
+            <motion.div
+              key={project.slug ?? project.title}
+              variants={staggerItem}
+              className={index === 0 ? "project-grid-feature" : undefined}
+            >
+              <ProjectCard project={project} large={index === 0} />
             </motion.div>
           ))}
         </motion.div>

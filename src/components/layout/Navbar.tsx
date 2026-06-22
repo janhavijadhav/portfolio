@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import type { Candidate } from "@/types";
-import { getFileUrl } from "@/sanity/image";
+import { RESUME_URL } from "@/lib/data";
 import { cn } from "@/lib/utils";
 
 interface NavbarProps {
@@ -16,7 +16,6 @@ const navItems = [
   { href: "/#experience", label: "Experience", match: "experience" },
   { href: "/#skills", label: "Skills", match: "skills" },
   { href: "/#education", label: "Education", match: "education" },
-  { href: "/#research", label: "Research", match: "research" },
   { href: "/#about", label: "About", match: "about" },
   { href: "/#contact", label: "Contact", match: "contact" },
 ];
@@ -24,13 +23,13 @@ const navItems = [
 export function Navbar({ candidate }: NavbarProps) {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
-  const resumeUrl = candidate.resume?.asset?._ref
-    ? getFileUrl(candidate.resume.asset._ref)
-    : undefined;
+  const [lastPathname, setLastPathname] = useState(pathname);
+  const resumeUrl = RESUME_URL;
 
-  useEffect(() => {
+  if (pathname !== lastPathname) {
+    setLastPathname(pathname);
     setMenuOpen(false);
-  }, [pathname]);
+  }
 
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";

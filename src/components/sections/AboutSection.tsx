@@ -37,7 +37,11 @@ export function AboutSection({ candidate }: AboutSectionProps) {
                   className="about-photo"
                 />
               ) : (
-                <div className="about-photo-placeholder">Add your photo</div>
+                <div className="about-photo-placeholder" aria-hidden>
+                  <span style={{ fontSize: "3.5rem", letterSpacing: "-0.02em" }}>
+                    JJ
+                  </span>
+                </div>
               )}
             </motion.div>
 

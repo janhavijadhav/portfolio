@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import type { Candidate } from "@/types";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
-import { getFileUrl } from "@/sanity/image";
+import { RESUME_URL } from "@/lib/data";
 import { fadeInUp } from "@/lib/animations";
 
 interface ContactSectionProps {
@@ -13,9 +13,7 @@ interface ContactSectionProps {
 
 export function ContactSection({ candidate }: ContactSectionProps) {
   const contact = candidate.contact;
-  const resumeUrl = candidate.resume?.asset?._ref
-    ? getFileUrl(candidate.resume.asset._ref)
-    : undefined;
+  const resumeUrl = RESUME_URL;
 
   return (
     <section className="section section-contact" id="contact">
