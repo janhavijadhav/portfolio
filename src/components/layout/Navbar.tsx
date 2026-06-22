@@ -56,6 +56,7 @@ export function Navbar({ candidate }: NavbarProps) {
     <header className="site-header">
       <div className="container nav-inner">
         <Link href="/" className="brand">
+          <span className="brand-dot" aria-hidden />
           {candidate.fullName}
         </Link>
 
