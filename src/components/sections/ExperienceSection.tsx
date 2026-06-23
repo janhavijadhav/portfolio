@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import type { ExperienceItem } from "@/types";
 import { Card } from "@/components/ui/Card";
 import { TagList } from "@/components/ui/TagChip";
@@ -53,8 +54,15 @@ export function ExperienceSection({
   description,
   experience,
 }: ExperienceSectionProps) {
+  const sectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start 80%", "end 20%"],
+  });
+  const lineScaleY = useTransform(scrollYProgress, [0, 1], [0, 1]);
+
   return (
-    <section className="section section-soft" id="experience">
+    <section className="section section-soft" id="experience" ref={sectionRef}>
       <div className="container">
         <AnimateIn>
           <SectionHeader
@@ -64,23 +72,33 @@ export function ExperienceSection({
           />
         </AnimateIn>
 
-        <motion.div
-          className="timeline"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.1 }}
-          variants={staggerContainer}
-        >
-          {experience.map((item) => (
+        <div className="timeline-wrapper">
+          {/* Animated vertical track */}
+          <div className="timeline-track" aria-hidden>
             <motion.div
-              key={`${item.title}-${item.company}`}
-              variants={staggerItem}
-              className="timeline-item"
-            >
-              <ExperienceCard experience={item} />
-            </motion.div>
-          ))}
-        </motion.div>
+              className="timeline-track-fill"
+              style={{ scaleY: lineScaleY }}
+            />
+          </div>
+
+          <motion.div
+            className="timeline"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.1 }}
+            variants={staggerContainer}
+          >
+            {experience.map((item) => (
+              <motion.div
+                key={`${item.title}-${item.company}`}
+                variants={staggerItem}
+                className="timeline-item"
+              >
+                <ExperienceCard experience={item} />
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
       </div>
     </section>
   );

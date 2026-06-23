@@ -13,26 +13,31 @@ const SECTIONS = [
 
 export function SectionDots() {
   const [active, setActive] = useState("hero");
+  const rafRef = useRef<number>(0);
 
   useEffect(() => {
-    const observers: IntersectionObserver[] = [];
+    const update = () => {
+      const trigger = window.scrollY + window.innerHeight * 0.35;
+      let best = SECTIONS[0].id;
+      for (const { id } of SECTIONS) {
+        const el = document.getElementById(id);
+        if (!el) continue;
+        if (el.offsetTop <= trigger) best = id;
+      }
+      setActive(best);
+    };
 
-    SECTIONS.forEach(({ id }) => {
-      const el = document.getElementById(id) ?? document.querySelector(".hero-section");
-      if (!el) return;
-      if (id === "hero") el.id = "hero";
+    const onScroll = () => {
+      cancelAnimationFrame(rafRef.current);
+      rafRef.current = requestAnimationFrame(update);
+    };
 
-      const obs = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) setActive(id);
-        },
-        { threshold: 0.4 },
-      );
-      obs.observe(el);
-      observers.push(obs);
-    });
-
-    return () => observers.forEach((o) => o.disconnect());
+    update(); // set initial state
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      cancelAnimationFrame(rafRef.current);
+    };
   }, []);
 
   const scrollTo = (id: string) => {

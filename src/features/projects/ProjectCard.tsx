@@ -58,14 +58,18 @@ export function ProjectCard({ project, compact = false, large = false }: Project
       ) : null}
       <h3>{project.title}</h3>
       {project.summary ? (
-        <p className="project-summary">{project.summary}</p>
+        <p className="project-summary">
+          {compact && project.summary.length > 115
+            ? `${project.summary.slice(0, 115)}…`
+            : project.summary}
+        </p>
       ) : null}
-      {project.whyItMatters ? (
+      {!compact && project.whyItMatters ? (
         <p className="project-why">
           <strong>Why it matters:</strong> {project.whyItMatters}
         </p>
       ) : null}
-      <TagList items={project.technologies} />
+      <TagList items={compact ? (project.technologies ?? []).slice(0, 4) : project.technologies} />
       <div className="card-actions">
         {slug ? (
           <Button href={`/projects/${slug}`} variant="primary">
@@ -126,7 +130,7 @@ export function ProjectsSection({
               variants={staggerItem}
               className={index === 0 ? "project-grid-feature" : undefined}
             >
-              <ProjectCard project={project} large={index === 0} />
+              <ProjectCard project={project} large={index === 0} compact={index !== 0} />
             </motion.div>
           ))}
         </motion.div>

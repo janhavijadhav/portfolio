@@ -6,6 +6,7 @@ import { ExperienceSection } from "@/components/sections/ExperienceSection";
 import { SkillsSection } from "@/components/sections/SkillsSection";
 import { EducationSection } from "@/components/sections/EducationSection";
 import { ResearchSection } from "@/components/sections/ResearchSection";
+import { CertificationsSection } from "@/components/sections/CertificationsSection";
 import { AboutSection } from "@/components/sections/AboutSection";
 import { ContactSection } from "@/components/sections/ContactSection";
 
@@ -21,6 +22,7 @@ export function PortfolioHome({ candidate }: PortfolioHomeProps) {
   const skills = sortByOrder(candidate.skills ?? []);
   const education = sortByOrder(candidate.education ?? []);
   const research = sortByOrder(candidate.research ?? []);
+  const certifications = candidate.certifications ?? [];
 
   return (
     <>
@@ -68,6 +70,7 @@ export function PortfolioHome({ candidate }: PortfolioHomeProps) {
           research={research}
         />
       ) : null}
+      <CertificationsSection certifications={certifications} />
       <AboutSection candidate={candidate} />
       <ContactSection candidate={candidate} />
     </>

@@ -1,3 +1,7 @@
+"use client";
+
+import { ScrambleText } from "./ScrambleText";
+
 interface SectionHeaderProps {
   eyebrow?: string;
   title: string;
@@ -14,7 +18,9 @@ export function SectionHeader({
   return (
     <div className={className}>
       {eyebrow ? <p className="eyebrow">{eyebrow}</p> : null}
-      <h2>{title}</h2>
+      <h2>
+        <ScrambleText text={title} />
+      </h2>
       {description ? <p className="section-description">{description}</p> : null}
     </div>
   );

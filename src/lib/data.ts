@@ -2,11 +2,9 @@ import type { Candidate } from "@/types";
 
 /**
  * Static portfolio content for Janhavi Jadhav.
+ * All sections maintained here — no CMS required.
  *
- * This site originally fetched everything from Sanity CMS. To keep things
- * simple for a personal portfolio (no CMS write token required), all
- * content lives here as a typed constant and is imported directly by the
- * pages instead of going through the Sanity client.
+ * Certifications array is ready — add your LinkedIn certs below.
  */
 
 export const RESUME_URL = "/Janhavi_Jadhav_Resume.pdf";
@@ -15,31 +13,31 @@ export const candidate: Candidate = {
   _id: "candidate-janhavi-jadhav",
   fullName: "Janhavi Jadhav",
   slug: "janhavi-jadhav",
-  professionalTitle: "Software Engineer, Agentic AI & Applied ML",
+  professionalTitle: "Software Engineer · AI/ML · Data Engineering",
   shortBio:
-    "Graduate student with 2+ years of experience building AI-powered applications, agentic systems, and production-grade APIs — turning complex data into practical, decision-ready software.",
+    "MS graduate (UMBC, GPA 3.97) with 2+ years building AI systems, cloud data pipelines, and production APIs — across agentic AI, data engineering, machine learning, and full-stack development.",
   featured: true,
   displayOrder: 0,
 
   hero: {
-    headline: "Building agentic AI systems that turn complex data into decisions.",
+    headline: "Building data systems and AI that turn complexity into clarity.",
     subheadline:
-      "I'm a graduate student and software engineer with 2+ years of experience building AI-powered applications, retrieval-augmented generation systems, and production-grade APIs using Python, FastAPI, and modern LLM frameworks. I care about practical AI products that improve decision-making, efficiency, and user experience.",
+      "I'm a recent Information Systems graduate with 2+ years of experience across AI/ML systems, cloud-native data engineering, and full-stack development. From multi-agent LLM pipelines to AWS data lakehouses, I build production-grade systems that make data useful and decisions faster.",
     highlights: [
-      "Agentic AI",
-      "RAG & Knowledge Graphs",
-      "Multi-Agent Systems",
-      "FastAPI",
-      "LLM Engineering",
-      "Data Platforms",
+      "Agentic AI & RAG",
+      "Data Engineering",
+      "ML Engineering",
+      "Cloud (AWS · GCP)",
+      "Python & FastAPI",
+      "Full-Stack",
     ],
     snapshotLabel: "Snapshot",
-    snapshotTitle: "Software Engineer, Agentic AI",
+    snapshotTitle: "Software Engineer · AI/ML · Data Engineering",
     snapshotItems: [
-      "2+ years building production AI systems and APIs",
-      "Multi-agent RAG architectures with knowledge graphs",
       "MS in Information Systems, UMBC — GPA 3.97/4.0",
-      "Open to Software Engineer / Applied AI roles",
+      "6 end-to-end projects: AI, DE, ML & full-stack",
+      "AWS, GCP, Kafka, Spark, dbt, Airflow, Terraform",
+      "Open to SWE · AI/ML · Data Engineering · Data Science roles",
     ],
   },
 
@@ -47,14 +45,15 @@ export const candidate: Candidate = {
     eyebrow: "About",
     title: "About Me",
     paragraphs: [
-      "I'm a graduate student in Information Systems with 2+ years of experience building AI-powered applications, intelligent data systems, and production-grade APIs. My work spans LLM-enabled solutions, retrieval-augmented generation, and end-to-end software platforms built with Python, FastAPI, and PostgreSQL.",
-      "What excites me most about AI right now isn't content generation — it's AI that helps people make better decisions, work more efficiently, and solve real operational problems. I enjoy translating complex technical challenges into scalable, user-focused solutions, and I'm currently exploring Software Engineer and Applied AI roles where I can keep building agentic systems that create real impact.",
+      "I'm a recent Information Systems graduate (UMBC, GPA 3.97) with hands-on experience across AI/ML systems, data engineering, and full-stack development. My work spans multi-agent LLM systems, real-time streaming data pipelines, cloud-native data lakehouses, NLP, and computer vision — all built to production standards with CI/CD, testing, and monitoring.",
+      "I thrive at the intersection of data and intelligent systems — building things that solve real operational problems at scale.",
     ],
     tags: [
       "Agentic AI",
-      "RAG Pipelines",
-      "Multi-Agent Systems",
-      "Full-Stack AI Platforms",
+      "Data Engineering",
+      "Machine Learning",
+      "Cloud Platforms",
+      "Full-Stack Development",
       "MLOps",
     ],
   },
@@ -62,7 +61,7 @@ export const candidate: Candidate = {
   contact: {
     title: "Let's Connect",
     description:
-      "I'm graduating from UMBC in May 2026 and currently exploring Software Engineer and Applied AI opportunities. If you'd like to connect, reach out by email or LinkedIn — I'd love to talk.",
+      "I recently graduated from UMBC (May 2026) and am actively exploring roles in Software Engineering, AI/ML Engineering, Data Engineering, and Data Science. Reach out via email or LinkedIn — I'd love to talk.",
     email: "janhavij0603@gmail.com",
     linkedinUrl: "https://www.linkedin.com/in/janhavi-jadhav006",
   },
@@ -76,17 +75,23 @@ export const candidate: Candidate = {
   ],
 
   seo: {
-    metaTitle: "Janhavi Jadhav | Software Engineer, Agentic AI & Applied ML",
+    metaTitle: "Janhavi Jadhav | Software Engineer · AI/ML · Data Engineering",
     metaDescription:
-      "Graduate student and software engineer building AI-powered applications, agentic systems, RAG pipelines, and production-grade APIs.",
+      "Recent MS graduate (UMBC, GPA 3.97) building AI systems, cloud data pipelines, and production-grade software. Open to SWE, AI/ML, Data Engineering, and Data Science roles.",
     keywords: [
+      "Software Engineer",
+      "AI Engineer",
+      "ML Engineer",
+      "Data Engineer",
+      "Data Scientist",
       "Agentic AI",
       "RAG",
       "Multi-Agent Systems",
+      "Data Engineering",
       "FastAPI",
-      "Machine Learning",
-      "LLM Engineering",
-      "Software Engineer",
+      "Python",
+      "AWS",
+      "GCP",
     ],
   },
 
@@ -94,7 +99,7 @@ export const candidate: Candidate = {
     eyebrow: "Selected Work",
     title: "Featured Projects",
     description:
-      "Production-minded AI systems spanning multi-agent orchestration, real-time data platforms, and applied NLP.",
+      "End-to-end builds spanning agentic AI, cloud data engineering, ML/NLP pipelines, streaming systems, and computer vision.",
   },
   experienceSection: {
     eyebrow: "Work",
@@ -104,26 +109,29 @@ export const candidate: Candidate = {
   },
   skillsSection: {
     eyebrow: "Capabilities",
-    title: "Skills",
+    title: "Technical Skills",
     description:
-      "A mix of agentic AI / LLM engineering, applied machine learning, data engineering, and full-stack software practices.",
+      "Spanning LLM/agentic AI, data engineering, cloud infrastructure, machine learning, and full-stack software engineering.",
   },
   educationSection: {
     eyebrow: "Academic Background",
     title: "Education",
   },
 
+  /* ─────────────────────────────
+     PROJECTS
+  ───────────────────────────── */
   projects: [
     {
       title: "FinSight — Multi-Agent Financial Research System",
       slug: "finsight",
-      category: "LLM / Multi-Agent / RAG",
+      category: "Agentic AI / RAG",
       summary:
-        "Production-grade multi-agent system orchestrating 4 specialized agents (Planning, RAG, Research, Synthesis) to generate cited financial analyst reports from SEC 10-K filings in under 12 seconds, with streaming delivery via FastAPI.",
+        "Production-grade multi-agent platform orchestrating 4 specialized agents (Planning, RAG, Research, Synthesis) to generate cited financial analyst reports from SEC 10-K filings in under 12 seconds, with streaming delivery via FastAPI.",
       whyItMatters:
         "Manual analyst research is slow and hard to audit. FinSight grounds every claim in source filings via hybrid retrieval, so reports stay fast, cited, and trustworthy.",
       detailSummary:
-        "A multi-agent financial research platform combining hybrid RAG, a knowledge graph of filing risk factors, structured outputs, and streaming responses to generate analyst-style reports from SEC 10-K filings.",
+        "A multi-agent financial research platform combining hybrid RAG (ChromaDB + NetworkX knowledge graph), structured outputs, and streaming responses to generate analyst-style reports from SEC 10-K filings.",
       technologies: [
         "Python",
         "FastAPI",
@@ -133,7 +141,10 @@ export const candidate: Candidate = {
         "Streamlit",
         "SQLite",
         "Prompt Engineering",
+        "Llama 3.3 70B",
+        "Sentence Transformers",
       ],
+      githubUrl: "https://github.com/janhavijadhav/finsight",
       featured: true,
       order: 0,
       detailBlocks: [
@@ -142,7 +153,7 @@ export const candidate: Candidate = {
           bulletItems: [
             "Architected a production-grade multi-agent system orchestrating 4 specialized agents — Planning, RAG, Research, and Synthesis — to generate cited financial analyst reports from SEC 10-K filings in under 12 seconds, with streaming response delivery via FastAPI.",
             "Implemented hybrid RAG combining ChromaDB vector search across 1,138 chunks with a NetworkX knowledge graph of 366 risk nodes and 606 edges for richer, more accurate retrieval.",
-            "Exposed the system via a typed FastAPI REST API with structured outputs, plus a Streamlit analytics interface.",
+            "Exposed the system via a typed FastAPI REST API with structured outputs, plus a Streamlit analytics interface with audit logs and an evaluation dashboard.",
           ],
         },
         {
@@ -155,84 +166,217 @@ export const candidate: Candidate = {
         },
       ],
     },
+
     {
-      title: "Market Intelligence Data Platform",
-      slug: "market-intelligence-data-platform",
-      category: "Data Engineering / Streaming",
+      title: "HealthFlow — Cloud-Native Healthcare Data Pipeline",
+      slug: "healthflow",
+      category: "Data Engineering / Cloud",
       summary:
-        "Streaming financial data platform ingesting real-time market feeds via Kafka, transforming them with PySpark into a Snowflake data warehouse for investment signal analysis.",
+        "End-to-end healthcare data engineering platform processing 14K+ synthetic Medicare claims across a 3-zone AWS data lakehouse, with PySpark transformation, dbt analytics in BigQuery (19/19 tests passing), and 7 FastAPI endpoints — all orchestrated by Airflow on Kubernetes with Terraform-provisioned infra.",
       whyItMatters:
-        "Investment teams need timely, analytics-ready data. This platform turns raw streaming feeds into governed, queryable datasets that power dashboards and signal analysis.",
+        "Healthcare analytics requires reliable, auditable data across multiple systems. This platform demonstrates production DE patterns: IaC, event-driven ingestion, distributed batch processing, and analytics engineering from raw to mart.",
       detailSummary:
-        "A streaming data platform that ingests real-time market feeds via Kafka, transforms them with PySpark, models them with dbt in Snowflake, and exposes them through a FastAPI service and Superset dashboards.",
+        "A cloud-native data engineering platform ingesting Synthea synthetic EHR data through a 3-zone S3 lakehouse, PySpark transformation, BigQuery dbt modeling, and a FastAPI serving layer — all orchestrated by Airflow 3.x on Kubernetes.",
       technologies: [
-        "Kafka",
+        "AWS S3",
+        "AWS Lambda",
+        "AWS Glue",
         "PySpark",
-        "Snowflake",
         "dbt",
-        "FastAPI",
-        "Superset",
+        "Google BigQuery",
         "Airflow",
+        "Kubernetes",
+        "Helm",
+        "Terraform",
+        "FastAPI",
+        "GitHub Actions",
+        "Great Expectations",
+        "Python",
       ],
+      githubUrl: "https://github.com/janhavijadhav/healthflow",
       featured: true,
       order: 1,
       detailBlocks: [
         {
           heading: "What I Built",
           bulletItems: [
-            "Built a streaming financial data platform ingesting real-time market feeds via Kafka and transforming them with PySpark into a Snowflake data warehouse.",
-            "Modeled analytics-ready datasets using dbt and exposed them through a FastAPI service and Superset dashboards used for investment signal analysis.",
+            "Designed a 3-zone S3 data lakehouse (raw → processed → curated) with event-driven ingestion: AWS Lambda fires on S3 PutObject; Glue Crawlers auto-catalog schemas.",
+            "Built PySpark batch jobs that transform raw CSVs to Snappy-compressed Parquet; loaded into BigQuery via pandas-gbq and modeled with dbt (4 staging views, 2 mart tables, 19/19 quality tests passing).",
+            "Deployed a FastAPI REST API with 7 live BigQuery-backed endpoints and Swagger docs; orchestrated the full pipeline with a 6-task Airflow DAG on Kubernetes (Helm-deployed).",
           ],
         },
         {
-          heading: "Challenges Resolved",
+          heading: "Infrastructure & CI/CD",
           bulletItems: [
-            "Kafka listener configuration across environments.",
-            "Snowflake MFA bypass for automated service accounts.",
-            "Airflow executor compatibility issues.",
+            "Provisioned all 18 AWS resources (S3, Lambda, Glue, IAM, CloudWatch) via Terraform — fully reproducible infra.",
+            "GitHub Actions CI runs linting, unit tests, and `terraform fmt` on every push.",
           ],
         },
       ],
     },
+
     {
-      title: "Product Sentiment Analysis Pipeline",
-      slug: "product-sentiment-analysis-pipeline",
-      category: "NLP / MLOps",
+      title: "Market Intelligence Data Platform",
+      slug: "market-intelligence-data-platform",
+      category: "Data Engineering / Streaming",
       summary:
-        "AI-powered sentiment analysis application using Hugging Face RoBERTa to classify 500K+ customer reviews, with containerized deployment and CI/CD.",
+        "Real-time financial data platform ingesting simulated market tick data via Kafka, processing with PySpark Structured Streaming (VWAP, anomaly detection), warehousing in Snowflake, and serving analytics via FastAPI + Redis + Apache Superset dashboards.",
       whyItMatters:
-        "Turning unstructured customer feedback into reliable sentiment signals at scale, with the monitoring needed to trust the model in production.",
+        "Investment teams need timely, analytics-ready data. This platform demonstrates an event-driven streaming architecture — from raw tick feed to governed mart tables with statistical anomaly detection.",
       detailSummary:
-        "An AI-powered sentiment analysis application leveraging Hugging Face RoBERTa to classify 500K+ customer reviews, exposed via RESTful APIs with full containerized CI/CD and monitoring.",
+        "A streaming financial data platform built on Kafka, PySpark Structured Streaming, Snowflake, dbt, FastAPI, Redis, and Apache Superset — containerized with Docker Compose and automated with GitHub Actions CI/CD.",
       technologies: [
-        "Hugging Face Transformers",
-        "RoBERTa",
-        "Docker",
-        "CI/CD",
-        "REST APIs",
-        "NLP",
+        "Apache Kafka",
+        "PySpark Structured Streaming",
+        "Snowflake",
+        "dbt",
+        "FastAPI",
+        "Redis",
+        "Apache Superset",
+        "Airflow",
+        "Docker Compose",
+        "GitHub Actions",
+        "Python",
       ],
+      githubUrl: "https://github.com/janhavijadhav/market-intelligence-platform",
       featured: true,
       order: 2,
       detailBlocks: [
         {
           heading: "What I Built",
           bulletItems: [
-            "Developed an AI-powered sentiment analysis application leveraging Hugging Face RoBERTa to classify 500K+ customer reviews.",
-            "Built RESTful APIs and automated workflows to support scalable inference, monitoring, and deployment.",
+            "Kafka producer simulates tick data for 5 symbols; PySpark Structured Streaming computes VWAP, rolling averages, trade count, and volatility on 1-minute windows every 30 seconds.",
+            "Processed data lands in Snowflake across raw → staging → mart layers via dbt with full lineage tracking and anomaly detection (z-score-based price spike flags).",
+            "FastAPI + Redis cache (60s TTL) serves 7 endpoints; Apache Superset connected to Snowflake marts for VWAP, volume, and volatility charts.",
+          ],
+        },
+        {
+          heading: "Observability & CI/CD",
+          bulletItems: [
+            "Airflow DAG monitors pipeline health every 15 minutes: connection check, data freshness validation, null-rate checks, and dbt model refresh.",
+            "GitHub Actions CI runs pytest (7 unit tests) and flake8 linting on every push to main.",
+          ],
+        },
+      ],
+    },
+
+    {
+      title: "Product Sentiment Analysis Pipeline",
+      slug: "product-sentiment-analysis-pipeline",
+      category: "NLP / MLOps",
+      summary:
+        "End-to-end MLOps pipeline processing 500K+ product reviews with HuggingFace RoBERTa, served via Flask REST API, orchestrated by Airflow, and monitored through Grafana + Prometheus dashboards — fully containerized with Docker and CI/CD.",
+      whyItMatters:
+        "Turning unstructured customer feedback into reliable sentiment signals at scale, with the monitoring infrastructure to trust the model in production.",
+      detailSummary:
+        "An AI-powered sentiment analysis application leveraging HuggingFace RoBERTa (cardiffnlp/twitter-roberta-base-sentiment-latest) to classify 500K+ customer reviews, with MLOps infrastructure including Airflow orchestration, Prometheus metrics, Grafana dashboards, and GitHub Actions CI.",
+      technologies: [
+        "Hugging Face Transformers",
+        "RoBERTa",
+        "Flask",
+        "PostgreSQL",
+        "Airflow",
+        "Prometheus",
+        "Grafana",
+        "Docker",
+        "CI/CD",
+        "pytest",
+        "Python",
+      ],
+      githubUrl: "https://github.com/janhavijadhav/sentiment-pipeline",
+      featured: true,
+      order: 3,
+      detailBlocks: [
+        {
+          heading: "What I Built",
+          bulletItems: [
+            "Developed an ETL pipeline loading 500K+ product reviews into PostgreSQL, scoring each with cardiffnlp/twitter-roberta-base-sentiment-latest, storing results for downstream analytics.",
+            "Built a Flask REST API with 7 endpoints: single prediction, batch prediction, paginated review data, pipeline stats, run history, and Prometheus metrics.",
+            "Designed Grafana monitoring dashboards tracking inference latency, sentiment distribution, model accuracy, and pipeline run history.",
           ],
         },
         {
           heading: "Deployment & Monitoring",
           bulletItems: [
-            "Containerized services with Docker and implemented CI/CD pipelines for reliable software delivery.",
-            "Designed monitoring dashboards to visualize sentiment insights, model performance, and operational metrics.",
+            "Containerized all services (PostgreSQL, Airflow, Grafana, Prometheus, Flask) with Docker Compose.",
+            "GitHub Actions CI spins up PostgreSQL, installs dependencies, runs pytest suite, and builds Docker image on every push.",
+          ],
+        },
+      ],
+    },
+
+    {
+      title: "Aviation RAG Assistant",
+      slug: "aviation-rag-assistant",
+      category: "LLM / RAG",
+      summary:
+        "Conversational AI assistant for aviation documentation queries — uses RAG over ICAO and FAA regulatory documents to answer compliance and airworthiness questions with source-cited responses.",
+      whyItMatters:
+        "Aviation compliance documentation is dense and high-stakes. Grounding every answer in cited ICAO/FAA source sections eliminates the hallucination risk that makes generic LLMs unsafe for regulatory queries.",
+      detailSummary:
+        "A RAG-based aviation compliance assistant that indexes ICAO/FAA documentation into a vector store and retrieves relevant sections to answer domain-specific questions with citations.",
+      technologies: [
+        "Python",
+        "RAG Pipelines",
+        "LangChain",
+        "Vector Database",
+        "FastAPI",
+        "Prompt Engineering",
+        "Document Parsing",
+      ],
+      featured: true,
+      order: 4,
+      detailBlocks: [
+        {
+          heading: "What I Built",
+          bulletItems: [
+            "Ingested and chunked ICAO and FAA PDF documents into a vector store; designed a retrieval pipeline to fetch the most relevant regulatory sections for each user query.",
+            "Built a conversational interface that returns source-cited answers, reducing hallucination risk for compliance-sensitive aviation queries.",
+          ],
+        },
+      ],
+    },
+
+    {
+      title: "SmartFit — Real-Time Workout Form Analyzer",
+      slug: "smartfit",
+      category: "Computer Vision / ML",
+      summary:
+        "Real-time fitness pose estimation app using Google MoveNet Thunder TFLite to extract 17 body keypoints from webcam feed, feeding a custom Keras neural network trained on labeled exercise pose data for live workout form feedback.",
+      whyItMatters:
+        "Poor form during workouts leads to injury. SmartFit brings pose-based feedback to anyone with a webcam, no gym trainer required.",
+      detailSummary:
+        "A full-stack fitness application combining MoveNet Thunder pose estimation (17 keypoints), a custom Keras classifier trained on CSV pose datasets, and a React frontend for real-time webcam-based exercise form analysis.",
+      technologies: [
+        "TensorFlow / Keras",
+        "MoveNet Thunder TFLite",
+        "Python",
+        "React",
+        "Computer Vision",
+        "Pose Estimation",
+        "scikit-learn",
+        "JavaScript",
+      ],
+      githubUrl: "https://github.com/janhavijadhav/smartfit.github.io",
+      liveDemoUrl: "https://janhavijadhav.github.io/smartfit.github.io",
+      featured: true,
+      order: 5,
+      detailBlocks: [
+        {
+          heading: "What I Built",
+          bulletItems: [
+            "Python pipeline extracts 17-keypoint coordinates from exercise video frames via MoveNet Thunder; processes and labels pose samples into per-exercise CSVs.",
+            "Trained a custom Keras neural network on the keypoint feature vectors to classify exercise forms with validation accuracy tracked across epochs.",
+            "React frontend accesses the webcam, runs MoveNet in-browser for keypoint extraction, and sends pose vectors to the Python classifier for real-time form feedback.",
           ],
         },
       ],
     },
   ],
 
+  /* ─────────────────────────────
+     EXPERIENCE
+  ───────────────────────────── */
   experience: [
     {
       title: "Project Management Intern",
@@ -258,7 +402,7 @@ export const candidate: Candidate = {
         "Implemented automated data validation systems that improved dataset reliability by 30%, reducing downstream model errors.",
         "Collaborated with cross-functional teams to operationalize models and communicate results to non-technical stakeholders.",
       ],
-      technologies: ["Python", "REST APIs", "ML Pipelines", "Data Validation"],
+      technologies: ["Python", "REST APIs", "ML Pipelines", "Data Validation", "PostgreSQL"],
       order: 1,
     },
     {
@@ -272,11 +416,14 @@ export const candidate: Candidate = {
         "Evaluated model performance using precision, recall, F1-score, and cross-validation; documented findings for reproducibility.",
         "Built dashboards to communicate AI-driven insights to non-technical business stakeholders.",
       ],
-      technologies: ["NLP", "Embeddings", "Model Evaluation"],
+      technologies: ["Python", "NLP", "Embeddings", "scikit-learn", "Model Evaluation"],
       order: 2,
     },
   ],
 
+  /* ─────────────────────────────
+     SKILLS
+  ───────────────────────────── */
   skills: [
     {
       title: "LLM & Agentic Systems",
@@ -299,71 +446,98 @@ export const candidate: Candidate = {
       order: 0,
     },
     {
-      title: "Languages & Frameworks",
+      title: "Data Engineering & Cloud",
       skills: [
-        "TypeScript",
-        "Python",
-        "SQL",
-        "Java",
-        "React",
-        "FastAPI",
-        "Flask",
-        "Streamlit",
+        "Apache Kafka",
+        "PySpark (Spark 3.x)",
+        "dbt Core",
+        "Apache Airflow",
+        "Snowflake",
+        "Google BigQuery",
+        "AWS S3 · Lambda · Glue · EC2",
+        "Terraform (IaC)",
+        "Kubernetes · Helm",
+        "Great Expectations",
+        "ETL / ELT Pipelines",
+        "Data Lakehouse (3-zone)",
+        "Hive-style Partitioning",
+        "GitHub Actions CI/CD",
       ],
       order: 1,
     },
     {
-      title: "AI / ML",
+      title: "Machine Learning & AI",
       skills: [
         "PyTorch",
+        "TensorFlow / Keras",
         "Hugging Face Transformers",
-        "Scikit-learn",
-        "Embeddings",
-        "NLP",
+        "scikit-learn",
+        "NLP (tokenization, embeddings, classification)",
+        "Computer Vision",
+        "Pose Estimation (MoveNet / TFLite)",
+        "Feature Engineering",
+        "Hyperparameter Tuning",
         "Model Evaluation (Precision, Recall, F1)",
         "Hallucination Scoring",
+        "A/B Testing",
       ],
       order: 2,
     },
     {
-      title: "Databases & Vector Stores",
-      skills: ["ChromaDB", "Qdrant", "PostgreSQL", "MySQL", "SQLite"],
+      title: "Languages & Frameworks",
+      skills: [
+        "Python",
+        "TypeScript",
+        "SQL",
+        "Java",
+        "FastAPI",
+        "Flask",
+        "React",
+        "Next.js",
+        "Streamlit",
+      ],
       order: 3,
     },
     {
-      title: "MLOps & DevOps",
+      title: "Databases & Storage",
       skills: [
-        "Docker",
-        "REST API Design",
-        "CI/CD",
-        "Model Monitoring",
-        "Airflow",
-        "Kafka",
-        "AWS (S3, EC2)",
+        "PostgreSQL",
+        "Google BigQuery",
+        "Snowflake",
+        "Redis",
+        "ChromaDB",
+        "Qdrant",
+        "MySQL",
+        "SQLite",
       ],
       order: 4,
     },
     {
-      title: "Software Engineering",
+      title: "DevOps & Software Engineering",
       skills: [
-        "Unit Testing",
-        "Integration Testing",
-        "Code Quality Practices",
+        "Docker",
+        "Kubernetes",
+        "REST API Design",
+        "CI/CD (GitHub Actions)",
+        "Prometheus · Grafana",
+        "Unit & Integration Testing (pytest)",
+        "API Documentation (Swagger / OpenAPI)",
+        "Agile / Scrum",
         "Technical Documentation",
-        "Debugging",
-        "API Design",
-        "RESTful Service Integration",
-        "Agile Development",
+        "Debugging & Code Review",
       ],
       order: 5,
     },
   ],
 
+  /* ─────────────────────────────
+     EDUCATION
+  ───────────────────────────── */
   education: [
     {
       institution: "University of Maryland, Baltimore County",
       degree: "Master of Science in Information Systems — GPA 3.97/4.0",
-      duration: "Expected May 2026",
+      duration: "Graduated May 2026",
       order: 0,
     },
     {
@@ -371,6 +545,54 @@ export const candidate: Candidate = {
       degree: "Bachelor of Engineering in Electronics — GPA 3.42/4.0",
       duration: "Graduated May 2023",
       order: 1,
+    },
+  ],
+
+  /* ─────────────────────────────
+     CERTIFICATIONS
+  ───────────────────────────── */
+  certifications: [
+    {
+      title: "Python for Data Science and Machine Learning Bootcamp",
+      issuer: "Udemy",
+      date: "Jul 2024",
+      credentialUrl: "https://www.udemy.com/certificate/UC-deeaf078-8542-4e80-9849-6af5a7c0a744/",
+      order: 0,
+    },
+    {
+      title: "SQL – MySQL for Data Analytics and Business Intelligence",
+      issuer: "Udemy",
+      date: "Jul 2024",
+      credentialUrl: "https://www.udemy.com/certificate/UC-217d3e10-34d3-4be4-b642-e9af429701ee/",
+      order: 1,
+    },
+    {
+      title: "Engineer Data in Google Cloud",
+      issuer: "Google Cloud",
+      date: "Nov 2020",
+      credentialUrl: "https://www.qwiklabs.com/public_profiles/dd18152a-e280-4d95-bf0c-c53ccd5f9e80/badges/555350",
+      order: 2,
+    },
+    {
+      title: "Insights from Data with BigQuery",
+      issuer: "Google Cloud",
+      date: "Nov 2020",
+      credentialUrl: "https://www.qwiklabs.com/public_profiles/dd18152a-e280-4d95-bf0c-c53ccd5f9e80/badges/551795",
+      order: 3,
+    },
+    {
+      title: "Integrate with Machine Learning APIs",
+      issuer: "Google Cloud",
+      date: "Nov 2020",
+      credentialUrl: "https://www.qwiklabs.com/public_profiles/dd18152a-e280-4d95-bf0c-c53ccd5f9e80/badges/555508",
+      order: 4,
+    },
+    {
+      title: "Introduction to Artificial Intelligence (AI)",
+      issuer: "IBM",
+      date: "Sep 2020",
+      credentialUrl: "https://coursera.org/verify/FZ3NS47WGFPV",
+      order: 5,
     },
   ],
 };

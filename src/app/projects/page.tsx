@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { AppShell } from "@/components/layout/AppShell";
 import { ProjectCard } from "@/features/projects/ProjectCard";
 import { SectionHeader } from "@/components/ui/SectionHeader";
@@ -31,14 +32,17 @@ export default async function ProjectsPage() {
     <AppShell candidate={candidate}>
       <section className="section page-offset">
         <div className="container">
+          <Link href="/" className="back-link">
+            ← Back to Home
+          </Link>
           <SectionHeader
             eyebrow="Projects"
-            title="Selected Work"
-            description="A curated set of work across machine learning, LLM systems, experimentation, and data workflows."
+            title="All Projects"
+            description="End-to-end builds spanning agentic AI, cloud data engineering, ML/NLP pipelines, streaming systems, and computer vision."
           />
           <div className="project-grid">
             {projects.map((project) => (
-              <ProjectCard key={project.slug ?? project.title} project={project} compact />
+              <ProjectCard key={project.slug ?? project.title} project={project} />
             ))}
           </div>
         </div>

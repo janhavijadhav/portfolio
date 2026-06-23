@@ -1,10 +1,11 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import { Fragment, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import type { Candidate } from "@/types";
 import { Button } from "@/components/ui/Button";
+import { MagneticButton } from "@/components/ui/MagneticButton";
 import { getSocialUrl } from "@/lib/utils";
 import { RESUME_URL } from "@/lib/data";
 
@@ -16,13 +17,6 @@ const NeuralNetCanvas = dynamic(
 interface HeroSectionProps {
   candidate: Candidate;
 }
-
-const AGENT_PIPELINE = [
-  { label: "Planning", color: "#a855f7" },
-  { label: "RAG", color: "#22d3ee" },
-  { label: "Research", color: "#a855f7" },
-  { label: "Synthesis", color: "#22d3ee" },
-];
 
 function useTyping(text: string, delay = 40) {
   const [displayed, setDisplayed] = useState("");
@@ -91,18 +85,24 @@ export function HeroSection({ candidate }: HeroSectionProps) {
           ) : null}
 
           <motion.div className="hero-actions" variants={fadeUp} custom={1.1}>
-            <Button href="/projects" variant="primary">
-              View Projects
-            </Button>
-            {resumeUrl ? (
-              <Button href={resumeUrl} variant="secondary" external>
-                Download Resume
+            <MagneticButton>
+              <Button href="/projects" variant="primary">
+                View Projects
               </Button>
+            </MagneticButton>
+            {resumeUrl ? (
+              <MagneticButton>
+                <Button href={resumeUrl} variant="secondary" external>
+                  Download Resume
+                </Button>
+              </MagneticButton>
             ) : null}
             {linkedinUrl ? (
-              <Button href={linkedinUrl} variant="ghost" external>
-                LinkedIn
-              </Button>
+              <MagneticButton>
+                <Button href={linkedinUrl} variant="ghost" external>
+                  LinkedIn
+                </Button>
+              </MagneticButton>
             ) : null}
           </motion.div>
 
@@ -121,34 +121,6 @@ export function HeroSection({ candidate }: HeroSectionProps) {
               ))}
             </motion.div>
           ) : null}
-        </motion.div>
-
-        {/* Agent pipeline band */}
-        <motion.div
-          className="pipeline-band hero-pipeline"
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.7, duration: 0.6, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
-        >
-          <div className="pipeline-top-line" />
-          <p className="mini-label" style={{ margin: 0 }}>
-            FinSight multi-agent pipeline
-          </p>
-          <div className="agent-flow">
-            {AGENT_PIPELINE.map((step, index) => (
-              <Fragment key={step.label}>
-                <span
-                  className="agent-node"
-                  style={{ "--node-color": step.color } as React.CSSProperties}
-                >
-                  {step.label}
-                </span>
-                {index < AGENT_PIPELINE.length - 1 && (
-                  <span className="agent-arrow" aria-hidden>→</span>
-                )}
-              </Fragment>
-            ))}
-          </div>
         </motion.div>
 
         {/* Scroll cue */}

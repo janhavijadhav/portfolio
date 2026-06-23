@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import type { Candidate } from "@/types";
 import { RESUME_URL } from "@/lib/data";
 import { cn } from "@/lib/utils";
+import { GlitchText } from "@/components/ui/GlitchText";
 
 interface NavbarProps {
   candidate: Candidate;
@@ -57,7 +58,7 @@ export function Navbar({ candidate }: NavbarProps) {
       <div className="container nav-inner">
         <Link href="/" className="brand">
           <span className="brand-dot" aria-hidden />
-          {candidate.fullName}
+          <GlitchText text={candidate.fullName} />
         </Link>
 
         <button
