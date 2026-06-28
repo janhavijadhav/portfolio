@@ -1,12 +1,12 @@
 import type { Candidate } from "@/types";
 import { sortByOrder } from "@/lib/utils";
 import { HeroSection } from "@/components/sections/HeroSection";
+import { SkillsSection } from "@/components/sections/SkillsSection";
 import { ProjectsSection } from "@/features/projects/ProjectCard";
 import { ExperienceSection } from "@/components/sections/ExperienceSection";
-import { SkillsSection } from "@/components/sections/SkillsSection";
+import { CertificationsSection } from "@/components/sections/CertificationsSection";
 import { EducationSection } from "@/components/sections/EducationSection";
 import { ResearchSection } from "@/components/sections/ResearchSection";
-import { CertificationsSection } from "@/components/sections/CertificationsSection";
 import { AboutSection } from "@/components/sections/AboutSection";
 import { ContactSection } from "@/components/sections/ContactSection";
 
@@ -27,6 +27,14 @@ export function PortfolioHome({ candidate }: PortfolioHomeProps) {
   return (
     <>
       <HeroSection candidate={candidate} />
+      {skills.length ? (
+        <SkillsSection
+          eyebrow={candidate.skillsSection?.eyebrow ?? "Capabilities"}
+          title={candidate.skillsSection?.title ?? "Skills"}
+          description={candidate.skillsSection?.description}
+          skills={skills}
+        />
+      ) : null}
       {featuredProjects.length ? (
         <ProjectsSection
           eyebrow={candidate.projectsSection?.eyebrow ?? "Selected Work"}
@@ -46,14 +54,7 @@ export function PortfolioHome({ candidate }: PortfolioHomeProps) {
           experience={experience}
         />
       ) : null}
-      {skills.length ? (
-        <SkillsSection
-          eyebrow={candidate.skillsSection?.eyebrow ?? "Capabilities"}
-          title={candidate.skillsSection?.title ?? "Skills"}
-          description={candidate.skillsSection?.description}
-          skills={skills}
-        />
-      ) : null}
+      <CertificationsSection certifications={certifications} />
       {education.length ? (
         <EducationSection
           eyebrow={candidate.educationSection?.eyebrow ?? "Academic Background"}
@@ -70,7 +71,6 @@ export function PortfolioHome({ candidate }: PortfolioHomeProps) {
           research={research}
         />
       ) : null}
-      <CertificationsSection certifications={certifications} />
       <AboutSection candidate={candidate} />
       <ContactSection candidate={candidate} />
     </>

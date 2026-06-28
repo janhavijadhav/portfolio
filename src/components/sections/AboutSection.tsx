@@ -14,7 +14,7 @@ interface AboutSectionProps {
 
 export function AboutSection({ candidate }: AboutSectionProps) {
   const about = candidate.about;
-  const imageUrl = getImageUrl(candidate.profileImage, 560, 560);
+  const imageUrl = getImageUrl(candidate.profileImage, 560, 560) ?? "/janhavi.jpg";
 
   return (
     <section className="section" id="about">

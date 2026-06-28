@@ -13,7 +13,7 @@ export const candidate: Candidate = {
   _id: "candidate-janhavi-jadhav",
   fullName: "Janhavi Jadhav",
   slug: "janhavi-jadhav",
-  professionalTitle: "Software Engineer · AI/ML · Data Engineering",
+  professionalTitle: "Data Engineer · Software Engineer · Agentic AI",
   shortBio:
     "MS graduate (UMBC, GPA 3.97) with 2+ years building AI systems, cloud data pipelines, and production APIs — across agentic AI, data engineering, machine learning, and full-stack development.",
   featured: true,
@@ -123,6 +123,53 @@ export const candidate: Candidate = {
   ───────────────────────────── */
   projects: [
     {
+      title: "AI Deployment Autopsy",
+      slug: "ai-deployment-autopsy",
+      category: "LLMOps / Agentic AI",
+      summary:
+        "Interactive post-mortem of 6 real AI deployment failures at a fictional manufacturing company — each with a live simulation: hallucination cascade, latency wall, schema drift bomb, auth deadlock, RAG reranking failure, and eval metric collapse.",
+      whyItMatters:
+        "Most AI demos show things working. This one shows what breaks in production and why — each failure reproduced interactively, with the root cause, the fix, and the before/after metrics.",
+      detailSummary:
+        "A Streamlit-based interactive museum of 6 AI deployment failures. Each page lets you reproduce the failure and see the fix — powered by a live LangGraph agent, BGE-M3 + BM25 hybrid RAG with cross-encoder reranking, and Groq Llama 3.3 70B streaming.",
+      technologies: [
+        "LangGraph",
+        "Claude Sonnet",
+        "Groq Llama 3.3 70B",
+        "BGE-M3 + BM25 RAG",
+        "Cross-Encoder Reranking",
+        "DuckDB",
+        "SQLite",
+        "Redis",
+        "LangFuse",
+        "DeepEval",
+        "Prometheus",
+        "Streamlit",
+        "GitHub Actions",
+      ],
+      liveDemoUrl: "https://ai-deployment-autopsy.streamlit.app",
+      featured: true,
+      order: 0,
+      detailBlocks: [
+        {
+          heading: "What I Built",
+          bulletItems: [
+            "9 fully interactive simulation pages covering 6 production AI failures: Hallucination Cascade, Latency Wall, Context Collapse, Schema Drift Bomb, Auth Deadlock, and Eval That Lied — each with symptom, root cause, fix, and metrics.",
+            "Live Reranker Lab showing keyword-collision failures in RRF fusion vs. cross-encoder reranking in real time — Jaccard-simulated scores reproduce the BAAI/bge-reranker-v2-m3 ordering without requiring model weights in the demo.",
+            "Agent Chat powered by Groq Llama 3.3 70B (streaming) via a LangGraph StateGraph with DuckDB (OLAP) + SQLite (OLTP + checkpointing) and Redis semantic cache at 0.92 cosine threshold.",
+          ],
+        },
+        {
+          heading: "Observability & Evals",
+          bulletItems: [
+            "Full observability stack: LangFuse tracing, Prometheus metrics, Grafana dashboards, and PagerDuty alerting wired across all pipeline stages.",
+            "Evaluation with DeepEval + LLM-as-judge + adversarial query generator; GitHub Actions eval gate blocks deploys on regression.",
+          ],
+        },
+      ],
+    },
+
+    {
       title: "FinSight — Multi-Agent Financial Research System",
       slug: "finsight",
       category: "Agentic AI / RAG",
@@ -146,7 +193,7 @@ export const candidate: Candidate = {
       ],
       githubUrl: "https://github.com/janhavijadhav/finsight",
       featured: true,
-      order: 0,
+      order: 1,
       detailBlocks: [
         {
           heading: "What I Built",
@@ -195,7 +242,7 @@ export const candidate: Candidate = {
       ],
       githubUrl: "https://github.com/janhavijadhav/healthflow",
       featured: true,
-      order: 1,
+      order: 2,
       detailBlocks: [
         {
           heading: "What I Built",
@@ -240,7 +287,7 @@ export const candidate: Candidate = {
       ],
       githubUrl: "https://github.com/janhavijadhav/market-intelligence-platform",
       featured: true,
-      order: 2,
+      order: 3,
       detailBlocks: [
         {
           heading: "What I Built",
@@ -285,7 +332,7 @@ export const candidate: Candidate = {
       ],
       githubUrl: "https://github.com/janhavijadhav/sentiment-pipeline",
       featured: true,
-      order: 3,
+      order: 4,
       detailBlocks: [
         {
           heading: "What I Built",
@@ -325,7 +372,7 @@ export const candidate: Candidate = {
         "Document Parsing",
       ],
       featured: true,
-      order: 4,
+      order: 5,
       detailBlocks: [
         {
           heading: "What I Built",
@@ -360,7 +407,7 @@ export const candidate: Candidate = {
       githubUrl: "https://github.com/janhavijadhav/smartfit.github.io",
       liveDemoUrl: "https://janhavijadhav.github.io/smartfit.github.io",
       featured: true,
-      order: 5,
+      order: 6,
       detailBlocks: [
         {
           heading: "What I Built",
@@ -383,40 +430,41 @@ export const candidate: Candidate = {
       company: "MicDots",
       duration: "January 2026 – May 2026",
       description:
-        "Supported technology and pilot initiatives through project coordination, operational reporting, and stakeholder collaboration.",
+        "Built data-backed reporting infrastructure and served as the technical-to-business translation layer for technology pilot rollouts.",
       highlights: [
-        "Developed reporting dashboards and tracking systems to monitor progress and key metrics.",
-        "Collaborated with cross-functional teams to improve execution efficiency and communication.",
+        "Built KPI tracking dashboards and reporting systems that consolidated scattered project metrics into a single source of truth used by both engineering and business stakeholders.",
+        "Gathered requirements from non-technical stakeholders, scoped deliverables with engineering, and tracked open issues through resolution to keep product launches on schedule.",
       ],
       order: 0,
     },
     {
-      title: "Assistant Systems Engineer",
+      title: "Data Integration & Pipeline Engineer",
       company: "Tata Consultancy Services",
       duration: "January 2024 – July 2024",
       description:
-        "Built and maintained production data pipelines processing 5M+ records/day within a large-scale SaaS enterprise environment, feeding ML model training and real-time inference workflows.",
+        "Shipped 10+ production integrations processing 5M+ records/day — connecting enterprise SaaS systems via REST APIs, triaging schema mismatches in real time, and publishing validated outputs to ML and reporting applications.",
       highlights: [
-        "Deployed ML-powered services via REST APIs integrated into enterprise SaaS applications, supporting classification and forecasting at scale; wrote technical documentation for each integration.",
-        "Engineered preprocessing and feature engineering workflows that cut model training latency by 35%.",
-        "Implemented automated data validation systems that improved dataset reliability by 30%, reducing downstream model errors.",
-        "Collaborated with cross-functional teams to operationalize models and communicate results to non-technical stakeholders.",
+        "Reduced downstream data errors 30% by engineering reusable end-to-end integration pipelines with standardized transformation, cleansing, and validation recipes.",
+        "Established REST API-based connections to 10+ enterprise source systems, triaging schema mismatches and data variances end-to-end to deliver application-ready data flows.",
+        "Onboarded new source systems 35% faster using standardized transformation recipes with automated audit-matching and validation gates that caught schema gaps before reaching consumers.",
+        "Surfaced front-line integration pain points to Engineering and Product, directly influencing two platform-level improvements that reduced team-wide manual triage time.",
       ],
-      technologies: ["Python", "REST APIs", "ML Pipelines", "Data Validation", "PostgreSQL"],
+      technologies: ["Python", "REST APIs", "Snowflake", "dbt", "PySpark", "Airflow", "Data Validation"],
       order: 1,
     },
     {
-      title: "Data Analyst Intern",
+      title: "Data & Analytics Engineering Intern",
       company: "TCR Innovation",
       duration: "March 2022 – May 2023",
       description:
-        "Developed ML models on datasets exceeding 1M records, improving prediction accuracy by 18% through feature engineering and hyperparameter tuning.",
+        "Designed analytics workflows across 1M+ records covering data cleansing, normalization, schema mapping, and NLP-based insight extraction — with results delivered to both technical and non-technical stakeholders.",
       highlights: [
-        "Applied NLP techniques — tokenization, embeddings, and text classification — to extract actionable insights from unstructured customer feedback.",
-        "Evaluated model performance using precision, recall, F1-score, and cross-validation; documented findings for reproducibility.",
-        "Built dashboards to communicate AI-driven insights to non-technical business stakeholders.",
+        "Delivered clean, model-ready datasets across 1M+ records by executing analytics workflows covering data cleansing, normalization, schema mapping, and reconciliation.",
+        "Applied NLP techniques (tokenization, embeddings, text classification) to extract structured insights from semi-structured sources, communicated directly to business stakeholders.",
+        "Achieved 90%+ precision and recall on model outputs using validation pipelines with audit-matching metrics; prepared Excel-based reconciliation reports for stakeholder review.",
+        "Developed dashboards that translated complex model outputs into actionable metrics, improving data quality visibility across technical and non-technical teams.",
       ],
-      technologies: ["Python", "NLP", "Embeddings", "scikit-learn", "Model Evaluation"],
+      technologies: ["Python", "SQL", "NLP", "Pandas", "scikit-learn", "Data Validation", "Excel"],
       order: 2,
     },
   ],

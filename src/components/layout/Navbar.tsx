@@ -25,12 +25,15 @@ export function Navbar({ candidate }: NavbarProps) {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
   const [lastPathname, setLastPathname] = useState(pathname);
+  const [mounted, setMounted] = useState(false);
   const resumeUrl = RESUME_URL;
 
   if (pathname !== lastPathname) {
     setLastPathname(pathname);
     setMenuOpen(false);
   }
+
+  useEffect(() => { setMounted(true); }, []);
 
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
@@ -43,12 +46,7 @@ export function Navbar({ candidate }: NavbarProps) {
     if (match.startsWith("/")) {
       return pathname.startsWith(match);
     }
-    if (pathname !== "/") {
-      return false;
-    }
-    if (typeof window === "undefined") {
-      return false;
-    }
+    if (pathname !== "/" || !mounted) return false;
     const hash = window.location.hash.replace("#", "");
     return hash === match;
   };

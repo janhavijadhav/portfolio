@@ -1,14 +1,15 @@
 "use client";
-
 import { useEffect, useRef, useState } from "react";
 
 const SECTIONS = [
-  { id: "hero", label: "Home" },
-  { id: "projects", label: "Projects" },
-  { id: "experience", label: "Experience" },
-  { id: "skills", label: "Skills" },
-  { id: "education", label: "Education" },
-  { id: "contact", label: "Contact" },
+  { id: "hero",           label: "Home" },
+  { id: "skills",         label: "Skills" },
+  { id: "projects",       label: "Projects" },
+  { id: "experience",     label: "Experience" },
+  { id: "certifications", label: "Certifications" },
+  { id: "education",      label: "Education" },
+  { id: "about",          label: "About" },
+  { id: "contact",        label: "Contact" },
 ];
 
 export function SectionDots() {
@@ -32,7 +33,7 @@ export function SectionDots() {
       rafRef.current = requestAnimationFrame(update);
     };
 
-    update(); // set initial state
+    update();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => {
       window.removeEventListener("scroll", onScroll);
