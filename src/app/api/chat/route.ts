@@ -9,7 +9,7 @@ EXPERIENCE:
 1. MicDots — Project Management Intern (Jan 2026 – May 2026)
    Built KPI tracking dashboards for tech pilot rollouts; served as technical-to-business translation layer gathering requirements and tracking deliverables.
 
-2. Tata Consultancy Services — Data Integration & Pipeline Engineer (Jan 2024 – Jul 2024)
+2. Tata Consultancy Services — Assistant Systems Engineer (Jan 2024 – Jul 2024)
    Shipped 10+ production integrations processing 5M+ records/day via REST APIs. Reduced downstream data errors 30%, onboarded new source systems 35% faster using reusable ETL pipelines with automated validation. Influenced two platform-level improvements.
 
 3. TCR Innovation — Data & Analytics Engineering Intern (Mar 2022 – May 2023)

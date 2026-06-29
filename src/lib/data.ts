@@ -440,7 +440,7 @@ export const candidate: Candidate = {
       order: 0,
     },
     {
-      title: "Data Integration & Pipeline Engineer",
+      title: "Assistant Systems Engineer",
       company: "Tata Consultancy Services",
       duration: "January 2024 – July 2024",
       description:
