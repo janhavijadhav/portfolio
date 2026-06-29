@@ -192,6 +192,7 @@ export const candidate: Candidate = {
         "Sentence Transformers",
       ],
       githubUrl: "https://github.com/janhavijadhav/finsight",
+      liveDemoUrl: "https://finsight006.streamlit.app",
       featured: true,
       order: 1,
       detailBlocks: [
@@ -241,6 +242,7 @@ export const candidate: Candidate = {
         "Python",
       ],
       githubUrl: "https://github.com/janhavijadhav/healthflow",
+      liveDemoUrl: "https://healthflow006.streamlit.app",
       featured: true,
       order: 2,
       detailBlocks: [
@@ -371,6 +373,7 @@ export const candidate: Candidate = {
         "Prompt Engineering",
         "Document Parsing",
       ],
+      liveDemoUrl: "https://aviation-rag-assistant.streamlit.app",
       featured: true,
       order: 5,
       detailBlocks: [

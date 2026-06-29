@@ -59,8 +59,8 @@ export function ProjectCard({ project, compact = false, large = false }: Project
       <h3>{project.title}</h3>
       {project.summary ? (
         <p className="project-summary">
-          {compact && project.summary.length > 115
-            ? `${project.summary.slice(0, 115)}…`
+          {compact && project.summary.length > 130
+            ? `${project.summary.slice(0, 130)}…`
             : project.summary}
         </p>
       ) : null}
@@ -124,13 +124,12 @@ export function ProjectsSection({
           viewport={{ once: true, amount: 0.15 }}
           variants={staggerContainer}
         >
-          {projects.map((project, index) => (
+          {projects.map((project) => (
             <motion.div
               key={project.slug ?? project.title}
               variants={staggerItem}
-              className={index === 0 ? "project-grid-feature" : undefined}
             >
-              <ProjectCard project={project} large={index === 0} compact={index !== 0} />
+              <ProjectCard project={project} compact />
             </motion.div>
           ))}
         </motion.div>
