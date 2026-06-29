@@ -408,7 +408,6 @@ export const candidate: Candidate = {
         "JavaScript",
       ],
       githubUrl: "https://github.com/janhavijadhav/smartfit.github.io",
-      liveDemoUrl: "https://janhavijadhav.github.io/smartfit.github.io",
       featured: true,
       order: 6,
       detailBlocks: [
