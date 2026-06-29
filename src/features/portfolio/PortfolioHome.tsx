@@ -15,9 +15,11 @@ interface PortfolioHomeProps {
 }
 
 export function PortfolioHome({ candidate }: PortfolioHomeProps) {
-  const featuredProjects = sortByOrder(
+  const allFeaturedProjects = sortByOrder(
     candidate.projects?.filter((project) => project.featured !== false) ?? [],
   );
+  // Show top 6 on homepage; SmartFit (order 6) appears only on /projects
+  const featuredProjects = allFeaturedProjects.slice(0, 6);
   const experience = sortByOrder(candidate.experience ?? []);
   const skills = sortByOrder(candidate.skills ?? []);
   const education = sortByOrder(candidate.education ?? []);
